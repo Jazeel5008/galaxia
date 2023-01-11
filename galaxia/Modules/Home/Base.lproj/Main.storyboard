@@ -208,6 +208,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="syv-b0-LQw"/>
+                    <connections>
+                        <outlet property="cv_galaxies" destination="piK-mp-nZG" id="RTo-A5-dM8"/>
+                        <outlet property="pagerView" destination="Xd1-eD-oKp" id="zOf-QB-eo4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
