@@ -41,7 +41,14 @@ class ResultViewController: UIViewController {
         self.cv_categories.dataSource = self
         self.cv_categories.reloadData()
     }
-
+    
+    // MARK: - Button Actions
+    
+    @IBAction func didTapBackButton(_ sender: UIButton) {
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 extension ResultViewController : UITableViewDelegate, UITableViewDataSource {
