@@ -20,16 +20,12 @@ class HomeViewController: UIViewController {
 
         //Register Galaxy Cell
         self.cv_galaxies.register(UINib(nibName: "\(GalaxyCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier:"\(GalaxyCollectionViewCell.self)")
-        
-        
-    }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
         self.fetchGalaxy()
+        
     }
+    
+    
+    
     
     func fetchGalaxy(){
         
@@ -41,7 +37,11 @@ class HomeViewController: UIViewController {
          }
         
         viewModel.updateLoadingStatus = {
-            self.viewModel.isLoading ? print("loading") : print("done")
+            
+            DispatchQueue.main.async {
+                self.viewModel.isLoading ? self.activityStartAnimating() : self.activityStopAnimating()
+            }
+            
         }
         
         viewModel.fetchGalaxy()
@@ -60,9 +60,9 @@ class HomeViewController: UIViewController {
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         
-        let next = self.storyboard?.instantiateViewController(withIdentifier: "\(ResultViewController.self)")
-        
-        self.navigationController?.pushViewController(next!, animated: true)
+        let next = self.storyboard?.instantiateViewController(withIdentifier: "\(ResultViewController.self)") as! ResultViewController
+        next.data = self.viewModel.home.result
+        self.navigationController?.pushViewController(next, animated: true)
     }
     
 

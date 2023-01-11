@@ -263,13 +263,13 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x13-Ur-fVC">
-                                                <rect key="frame" x="59.333333333333343" y="5" width="328.66666666666663" height="55"/>
+                                                <rect key="frame" x="59.333333333333343" y="5" width="328.66666666666663" height="50"/>
                                                 <subviews>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search " textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uvM-vv-Sb0">
-                                                        <rect key="frame" x="5" y="0.0" width="323.66666666666669" height="55"/>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uvM-vv-Sb0">
+                                                        <rect key="frame" x="5" y="0.0" width="323.66666666666669" height="50"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" name="text_white"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -300,7 +300,7 @@
                                         <color key="backgroundColor" name="background"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="x13-Ur-fVC" secondAttribute="trailing" constant="5" id="B97-Aw-mg4"/>
-                                            <constraint firstAttribute="bottom" secondItem="x13-Ur-fVC" secondAttribute="bottom" constant="5" id="IMR-a0-hO1"/>
+                                            <constraint firstAttribute="bottom" secondItem="x13-Ur-fVC" secondAttribute="bottom" constant="10" id="IMR-a0-hO1"/>
                                             <constraint firstItem="tCj-tl-XBJ" firstAttribute="leading" secondItem="NZH-x8-8BK" secondAttribute="leading" id="UYr-2O-3OB"/>
                                             <constraint firstItem="x13-Ur-fVC" firstAttribute="top" secondItem="NZH-x8-8BK" secondAttribute="top" constant="5" id="V2C-Us-pDt"/>
                                             <constraint firstAttribute="height" constant="65" id="V3p-uk-Icp"/>
@@ -309,22 +309,32 @@
                                             <constraint firstItem="tCj-tl-XBJ" firstAttribute="top" secondItem="NZH-x8-8BK" secondAttribute="top" id="yzo-p5-DNU"/>
                                         </constraints>
                                     </view>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="56b-9n-wpL">
-                                        <rect key="frame" x="0.0" y="65" width="393" height="65"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4B-L0-zNj">
+                                        <rect key="frame" x="0.0" y="65" width="393" height="75"/>
+                                        <subviews>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="56b-9n-wpL">
+                                                <rect key="frame" x="0.0" y="10" width="393" height="55"/>
+                                                <color key="backgroundColor" name="seperator"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Ml8-yb-Lcl">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells/>
+                                            </collectionView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="65" id="zEQ-Ov-A7G"/>
+                                            <constraint firstAttribute="bottom" secondItem="56b-9n-wpL" secondAttribute="bottom" constant="10" id="82l-OR-wtG"/>
+                                            <constraint firstAttribute="height" constant="75" id="GTn-u3-suE"/>
+                                            <constraint firstItem="56b-9n-wpL" firstAttribute="top" secondItem="c4B-L0-zNj" secondAttribute="top" constant="10" id="Jck-5o-Tmi"/>
+                                            <constraint firstItem="56b-9n-wpL" firstAttribute="leading" secondItem="c4B-L0-zNj" secondAttribute="leading" id="UaL-qE-z0L"/>
+                                            <constraint firstAttribute="trailing" secondItem="56b-9n-wpL" secondAttribute="trailing" id="gyn-vX-Aaz"/>
                                         </constraints>
-                                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ml8-yb-Lcl">
-                                            <size key="itemSize" width="128" height="128"/>
-                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        </collectionViewFlowLayout>
-                                        <cells/>
-                                    </collectionView>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Mfo-KS-UWY">
-                                        <rect key="frame" x="0.0" y="130" width="393" height="629"/>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Mfo-KS-UWY">
+                                        <rect key="frame" x="0.0" y="140" width="393" height="619"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
@@ -339,6 +349,10 @@
                             <constraint firstItem="DR1-Kc-hBT" firstAttribute="trailing" secondItem="JUo-UX-2Kq" secondAttribute="trailing" id="zsz-8M-zUI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cv_categories" destination="56b-9n-wpL" id="Odn-Zh-L6v"/>
+                        <outlet property="tv_galaxy" destination="Mfo-KS-UWY" id="Ve6-Q8-bJu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yEu-zJ-tZc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -362,6 +376,9 @@
         </namedColor>
         <namedColor name="secondary">
             <color red="0.3411764705882353" green="0.75686274509803919" blue="0.6705882352941176" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="seperator">
+            <color red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="text_light">
             <color red="0.5725490196078431" green="0.59215686274509804" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -6,6 +6,7 @@ target 'galaxia' do
   use_frameworks!
 
   # Pods for galaxia
-   pod 'FSPagerView'
+   pod 'Kingfisher', '~> 7.0'
+   pod 'lottie-ios'
 
 end
