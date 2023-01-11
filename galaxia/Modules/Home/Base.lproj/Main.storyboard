@@ -261,6 +261,9 @@
                                                     <constraint firstItem="wZy-nv-xyO" firstAttribute="centerX" secondItem="tCj-tl-XBJ" secondAttribute="centerX" id="gFd-1t-Qgv"/>
                                                     <constraint firstAttribute="width" secondItem="tCj-tl-XBJ" secondAttribute="height" multiplier="10:12" id="urH-84-TMm"/>
                                                 </constraints>
+                                                <connections>
+                                                    <action selector="didTapBackButton:" destination="z02-FW-9SJ" eventType="touchUpInside" id="AFL-Yf-7LY"/>
+                                                </connections>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x13-Ur-fVC">
                                                 <rect key="frame" x="59.333333333333343" y="5" width="328.66666666666663" height="50"/>
