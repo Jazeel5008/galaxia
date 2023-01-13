@@ -6,62 +6,65 @@
 //
 
 import UIKit
+import FSPagerView
 
 
 class HomeViewController: UIViewController {
 
    
-    let viewModel = HomeViewModel(dataService: HomeService())
-    @IBOutlet weak var cv_galaxies: UICollectionView!
+    // MARK: - ViewModel
+    let viewModel = HomeViewModel()
     
+    @IBOutlet weak var cv_galaxies: UICollectionView!
+    @IBOutlet weak var bannerView: FSPagerView! {
+        didSet {
+            self.bannerView.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
+            
+        }
+    }
+    @IBOutlet weak var banner_page: UIPageControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //Register Galaxy Cell
-        self.cv_galaxies.register(UINib(nibName: "\(GalaxyCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier:"\(GalaxyCollectionViewCell.self)")
-        self.fetchGalaxy()
-        
+         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.renderBannerView() // Top BannerView
+        self.renderGalaxiesCollection() // Galaxies
+    }
     
-    
-    
-    func fetchGalaxy(){
+    func renderBannerView(){
         
-        viewModel.showAlertClosure = {
+        DispatchQueue.main.async {
             
-            if let err = self.viewModel.error {
-                print(err)
-            }
-         }
-        
-        viewModel.updateLoadingStatus = {
-            
-            DispatchQueue.main.async {
-                self.viewModel.isLoading ? self.activityStartAnimating() : self.activityStopAnimating()
-            }
-            
-        }
-        
-        viewModel.fetchGalaxy()
-        
-        viewModel.didFetchFinishData = {
-            DispatchQueue.main.async {
-                self.cv_galaxies.delegate = self
-                self.cv_galaxies.dataSource = self
-                self.cv_galaxies.reloadData()
-            }
-            
+            self.bannerView.delegate = self
+            self.bannerView.dataSource = self
+            self.bannerView.automaticSlidingInterval = 3.0
+            self.bannerView.interitemSpacing = 10
+            self.bannerView.transformer = FSPagerViewTransformer(type: .linear)
+            self.bannerView.reloadData()
         }
         
     }
     
+    func renderGalaxiesCollection() {
+        
+        DispatchQueue.main.async {
+            self.cv_galaxies.register(UINib(nibName: "\(GalaxyCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier:"\(GalaxyCollectionViewCell.self)")
+            self.cv_galaxies.delegate = self
+            self.cv_galaxies.dataSource = self
+        }
+        
+    }
     
     @IBAction func searchButtonPressed(_ sender: UIButton) {
         
         let next = self.storyboard?.instantiateViewController(withIdentifier: "\(ResultViewController.self)") as! ResultViewController
-        next.data = self.viewModel.home.result
+        
         self.navigationController?.pushViewController(next, animated: true)
     }
     
@@ -69,30 +72,54 @@ class HomeViewController: UIViewController {
 }
 
 
+//Banner
+extension HomeViewController : FSPagerViewDelegate, FSPagerViewDataSource {
+    
+    func numberOfItems(in pagerView: FSPagerView) -> Int {
+        return self.viewModel.banners.count
+    }
+    
+    func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
+        
+        let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
+        
+        let image = self.viewModel.banners[index]
+        DispatchQueue.main.async {
+            cell.imageView!.image = UIImage(named: image)
+            cell.imageView?.clipsToBounds = true
+            cell.imageView?.cornerRadius = 15
+        }
+        
+        return cell
+        
+    }
+    
+}
+
+
 extension HomeViewController : UICollectionViewDelegateFlowLayout,UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        
-        return self.viewModel.home.result?.count ?? 0
+        return self.viewModel.galaxies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(GalaxyCollectionViewCell.self)", for: indexPath) as! GalaxyCollectionViewCell
         
-        if let data = self.viewModel.home.result {
-            cell.renderCell(data: data[indexPath.row])
-        }
+        cell.lbl_title.text = self.viewModel.galaxies[indexPath.row]
         
         return cell
-        
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: self.cv_galaxies.frame.size.width / 4, height: self.cv_galaxies.bounds.height)
+        return CGSize(width: collectionView.bounds.width / 4 , height: collectionView.bounds.height)
         
     }
-
+    
+    
 }
+
+

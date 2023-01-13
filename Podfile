@@ -8,5 +8,6 @@ target 'galaxia' do
   # Pods for galaxia
    pod 'Kingfisher', '~> 7.0'
    pod 'lottie-ios'
+   pod 'FSPagerView'
 
 end

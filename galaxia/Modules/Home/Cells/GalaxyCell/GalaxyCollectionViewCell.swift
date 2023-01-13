@@ -15,10 +15,10 @@ class GalaxyCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    func renderCell(data:Galaxy) {
+    func renderCell(name:String) {
         
         DispatchQueue.main.async {
-            self.lbl_title.text = data.title ?? "Unavailable"
+            self.lbl_title.text = name
         }
         
     }

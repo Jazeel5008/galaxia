@@ -20,9 +20,15 @@ extension UIView {
             let cornerRadius = newValue
             
             if UIDevice.current.userInterfaceIdiom == .phone {
-                layer.cornerRadius = cornerRadius
+                DispatchQueue.main.async {
+                    self.layer.cornerRadius = cornerRadius
+                }
+                
             } else {
-                layer.cornerRadius = cornerRadius + 5
+                DispatchQueue.main.async {
+                    self.layer.cornerRadius = cornerRadius + 5
+                }
+                
             }
             
         }

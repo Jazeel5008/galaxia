@@ -7,10 +7,10 @@
 
 import UIKit
 
-struct HomeService {
+struct ResultService {
     
     // MARK:- Singleton
-    static let shared = HomeService()
+    static let shared = ResultService()
     
     var url = "https://test.lascade.com/api/test/list"
     
