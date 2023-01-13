@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     // MARK: - ViewModel
     let viewModel = HomeViewModel()
     
+    
     @IBOutlet weak var cv_galaxies: UICollectionView!
     @IBOutlet weak var bannerView: FSPagerView! {
         didSet {
@@ -46,7 +47,9 @@ class HomeViewController: UIViewController {
             self.bannerView.automaticSlidingInterval = 3.0
             self.bannerView.interitemSpacing = 10
             self.bannerView.transformer = FSPagerViewTransformer(type: .linear)
+            self.banner_page.numberOfPages = self.viewModel.banners.count
             self.bannerView.reloadData()
+        
         }
         
     }
@@ -93,6 +96,16 @@ extension HomeViewController : FSPagerViewDelegate, FSPagerViewDataSource {
         return cell
         
     }
+    
+    func pagerView(_ pagerView: FSPagerView, didEndDisplaying cell: FSPagerViewCell, forItemAt index: Int) {
+        
+        DispatchQueue.main.async {
+            self.banner_page.currentPage = index
+        }
+        
+    }
+    
+    
     
 }
 

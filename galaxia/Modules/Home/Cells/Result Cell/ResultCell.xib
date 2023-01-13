@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Gilroy-Bold.ttf">
+            <string>Gilroy-Bold</string>
+        </array>
+        <array key="Gilroy-Medium.ttf">
+            <string>Gilroy-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultCell" rowHeight="279" id="99R-Gc-6qW" customClass="ResultCell" customModule="galaxia" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="410" height="279"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="99R-Gc-6qW" id="VD4-2k-rGM">
+                <rect key="frame" x="0.0" y="0.0" width="410" height="279"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CfU-qB-OmT">
+                        <rect key="frame" x="10" y="10" width="390" height="259"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZbE-gG-saW">
+                                <rect key="frame" x="4" y="4" width="110" height="150"/>
+                                <color key="backgroundColor" name="text_light"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="0cP-Or-Z4s"/>
+                                    <constraint firstAttribute="width" constant="110" id="Y6U-Ti-Bel"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="LQ3-ML-0xx">
+                                <rect key="frame" x="125" y="9.6666666666666714" width="258" height="153"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jupiter" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x56-ZB-YMx">
+                                        <rect key="frame" x="0.0" y="0.0" width="258" height="16"/>
+                                        <fontDescription key="fontDescription" name="Gilroy-Bold" family="Gilroy-Bold" pointSize="16"/>
+                                        <color key="textColor" name="text_dark"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6t-De-p6S">
+                                        <rect key="frame" x="0.0" y="21" width="258" height="132"/>
+                                        <string key="text">Jupiter is the fifth planet from the sun and the largest planet in the solar system. It is a gas giant, meaning it is made up mostly of hydrogen and helium gas. It is known for its distinctive red spot,Jupiter is the fifth planet from the sun and the largest planet in the solar system. It is a gas giant, meaning it is made up mostly of hydrogen and helium gas. It is known for its distinctive red spot,Jupiter is the fifth planet from the sun and the largest planet in the solar system. It is a gas giant, meaning it is made up mostly of hydrogen and helium gas. It is known for its distinctive red spot,</string>
+                                        <fontDescription key="fontDescription" name="Gilroy-Medium" family="Gilroy-Medium" pointSize="11"/>
+                                        <color key="textColor" name="text_light"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LQ3-ML-0xx" firstAttribute="leading" secondItem="ZbE-gG-saW" secondAttribute="trailing" constant="11" id="0Sy-QO-vXt"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ZbE-gG-saW" secondAttribute="bottom" id="2H9-4u-AQP"/>
+                            <constraint firstItem="ZbE-gG-saW" firstAttribute="top" secondItem="CfU-qB-OmT" secondAttribute="top" constant="4" id="7uA-lv-VFA"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="LQ3-ML-0xx" secondAttribute="bottom" id="BrX-DG-wgP"/>
+                            <constraint firstAttribute="trailing" secondItem="LQ3-ML-0xx" secondAttribute="trailing" constant="7" id="JjX-02-Oca"/>
+                            <constraint firstItem="LQ3-ML-0xx" firstAttribute="top" secondItem="CfU-qB-OmT" secondAttribute="top" constant="9.5" id="XBA-Lr-hsx"/>
+                            <constraint firstItem="ZbE-gG-saW" firstAttribute="leading" secondItem="CfU-qB-OmT" secondAttribute="leading" constant="4" id="imG-4L-pUU"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="0.0" height="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" systemColor="systemGray4Color"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="CfU-qB-OmT" firstAttribute="leading" secondItem="VD4-2k-rGM" secondAttribute="leading" constant="10" id="Ii6-wN-1au"/>
+                    <constraint firstItem="CfU-qB-OmT" firstAttribute="top" secondItem="VD4-2k-rGM" secondAttribute="top" constant="10" id="ZBU-tT-RCz"/>
+                    <constraint firstAttribute="bottom" secondItem="CfU-qB-OmT" secondAttribute="bottom" constant="10" id="f1l-zP-WBx"/>
+                    <constraint firstAttribute="trailing" secondItem="CfU-qB-OmT" secondAttribute="trailing" constant="10" id="wnM-h3-10a"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="img_image" destination="ZbE-gG-saW" id="YC1-5q-xsN"/>
+                <outlet property="lbl_desc" destination="l6t-De-p6S" id="XVm-wS-vhM"/>
+                <outlet property="lbl_title" destination="x56-ZB-YMx" id="w4Z-Fg-awU"/>
+            </connections>
+            <point key="canvasLocation" x="169.46564885496181" y="-163.02816901408451"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="text_dark">
+            <color red="0.12549019607843137" green="0.12549019607843137" blue="0.14509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="text_light">
+            <color red="0.5725490196078431" green="0.59215686274509804" blue="0.6588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -19,7 +19,7 @@ class ResultViewModel {
 
 
     var home: HomeModel!
-    var categories = ["Largest" ,"Brightest", "Smallest", "Closest"]
+    var categories = ["Largest" ,"Brightest", "Smallest", "Closest","Largest" ,"Brightest", "Smallest", "Closest"]
     
     
     var error: String? {

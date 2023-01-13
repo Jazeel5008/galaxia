@@ -15,7 +15,7 @@ var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(HomeViewController.self)") as! HomeViewController
+        let initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "\(TabViewController.self)") as! TabViewController
         let navigationController = UINavigationController(rootViewController: initialViewController)
         navigationController.isNavigationBarHidden = true
         self.window?.rootViewController = navigationController

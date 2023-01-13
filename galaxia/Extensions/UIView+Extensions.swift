@@ -52,7 +52,10 @@ extension UIView {
             return layer.shadowRadius
         }
         set {
-            layer.shadowRadius = newValue
+            DispatchQueue.main.async {
+                self.layer.shadowRadius = newValue
+            }
+            
         }
     }
     
@@ -62,7 +65,10 @@ extension UIView {
             return layer.shadowOpacity
         }
         set {
-            layer.shadowOpacity = newValue
+            DispatchQueue.main.async {
+                self.layer.shadowOpacity = newValue
+            }
+            
         }
     }
     
@@ -86,7 +92,11 @@ extension UIView {
         }
         set {
             if let color = newValue {
-                layer.shadowColor = color.cgColor
+                DispatchQueue.main.async {
+                    self.layer.shadowColor = color.cgColor
+                }
+                
+                print("shadow set")
             } else {
                 layer.shadowColor = nil
             }

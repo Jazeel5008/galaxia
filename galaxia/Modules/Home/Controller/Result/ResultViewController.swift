@@ -9,16 +9,19 @@ import UIKit
 
 class ResultViewController: UIViewController {
     @IBOutlet weak var cv_categories: UICollectionView!
-    @IBOutlet weak var cv_galaxy: UICollectionView!
+    @IBOutlet weak var tv_galaxy: UITableView!
     
     // MARK: - View Model
     let viewModel = ResultViewModel(dataService: ResultService())
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.fetchGalaxy()
     }
     
@@ -31,7 +34,7 @@ class ResultViewController: UIViewController {
             if let err = self.viewModel.error {
                 print(err)
             }
-         }
+        }
         
         viewModel.updateLoadingStatus = {
             
@@ -44,6 +47,7 @@ class ResultViewController: UIViewController {
         viewModel.fetchGalaxy()
         
         viewModel.didFetchFinishData = {
+            
             self.registerCells()
             
         }
@@ -53,20 +57,22 @@ class ResultViewController: UIViewController {
     func registerCells(){
         //Register Galaxy Table
         DispatchQueue.main.async {
-            self.cv_galaxy.register(UINib(nibName: "\(ResultCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(ResultCollectionViewCell.self)")
-            self.cv_galaxy.delegate = self
-            self.cv_galaxy.dataSource = self
-            self.cv_galaxy.reloadData()
-            self.cv_galaxy.layoutIfNeeded()
+            self.tv_galaxy.register(UINib(nibName: "\(ResultCell.self)", bundle: nil), forCellReuseIdentifier: "\(ResultCell.self)")
+            self.tv_galaxy.delegate = self
+            self.tv_galaxy.dataSource = self
+            self.tv_galaxy.reloadData()
+            
+            self.tv_galaxy.layoutIfNeeded()
         }
         
         
         //Register Categories Collection
         DispatchQueue.main.async {
-            self.cv_categories.register(UINib(nibName: "\(CategoryCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(CategoryCollectionViewCell.self)")
+            self.cv_categories.register(UINib(nibName: "\(CatCollectionViewCell.self)", bundle: nil), forCellWithReuseIdentifier: "\(CatCollectionViewCell.self)")
             self.cv_categories.delegate = self
             self.cv_categories.dataSource = self
             self.cv_categories.reloadData()
+            self.cv_categories.selectItem(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .left)
         }
         
     }
@@ -89,8 +95,7 @@ extension ResultViewController : UICollectionViewDelegateFlowLayout,UICollection
         switch collectionView {
             case cv_categories :
                 return self.viewModel.categories.count
-            case cv_galaxy :
-                return self.viewModel.home.result?.count ?? 0
+            
             default:
                 return 0
         }
@@ -100,21 +105,11 @@ extension ResultViewController : UICollectionViewDelegateFlowLayout,UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch collectionView {
-            case cv_galaxy:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(ResultCollectionViewCell.self)", for: indexPath) as! ResultCollectionViewCell
-                
-                if let galaxies = self.viewModel.home.result {
-                    cell.renderCell(data: galaxies[indexPath.row])
-                }
-                
-                return cell
-                
-                
-                
+            
             case cv_categories:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CategoryCollectionViewCell.self)", for: indexPath) as! CategoryCollectionViewCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "\(CatCollectionViewCell.self)", for: indexPath) as! CatCollectionViewCell
                 
-                cell.renderCell(title: self.viewModel.categories[indexPath.row])
+                cell.render(title: self.viewModel.categories[indexPath.row])
                 
                 return cell
             default:
@@ -128,17 +123,49 @@ extension ResultViewController : UICollectionViewDelegateFlowLayout,UICollection
         let size = collectionView.frame.size
         
         switch collectionView {
-            case cv_galaxy :
-                return CGSize(width: size.width, height: 200)
+            
             case cv_categories :
-               
-                return CGSize(width:size.width / 4, height:200)
+                
+                return CGSize(width:size.width / 4, height:50)
             default:
                 print("Default size")
                 return CGSize(width: 0, height: 0)
         }
         
     }
+   
+    
+}
+
+extension ResultViewController : UITableViewDelegate,UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.viewModel.home.result?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        if let galaxies = self.viewModel.home.result{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "\(ResultCell.self)", for: indexPath) as! ResultCell
+            cell.renderCell(data: galaxies[indexPath.row])
+            
+            DispatchQueue.main.async {
+                cell.layoutIfNeeded()
+            }
+            return cell
+        }
+        
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+            return UITableView.automaticDimension
+        
+        
+    }
+    
+    
     
     
 }

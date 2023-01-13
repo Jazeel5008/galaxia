@@ -13,7 +13,7 @@ extension UIViewController{
     func activityStartAnimating() {
         let backgroundView = UIView()
         backgroundView.frame = CGRect.init(x: 0, y: 0, width: self.view.bounds.width, height: self.view.bounds.height)
-        backgroundView.backgroundColor = UIColor.gray.withAlphaComponent(0.5)
+        backgroundView.backgroundColor = UIColor.APP_TEXTDARK!.withAlphaComponent(0.5)
         backgroundView.tag = 475647
         backgroundView.alpha = 0
         
