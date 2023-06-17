@@ -1,0 +1,24 @@
+PODS:
+  - FSPagerView (0.8.3)
+  - Kingfisher (7.4.1)
+  - lottie-ios (4.0.1)
+
+DEPENDENCIES:
+  - FSPagerView
+  - Kingfisher (~> 7.0)
+  - lottie-ios
+
+SPEC REPOS:
+  trunk:
+    - FSPagerView
+    - Kingfisher
+    - lottie-ios
+
+SPEC CHECKSUMS:
+  FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
+  Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
+  lottie-ios: 54d22edf55b839f0929cabbfe609c9aa548b1145
+
+PODFILE CHECKSUM: c4139cad5a7395c4769d7604c1d350b1afe398a2
+
+COCOAPODS: 1.11.3
